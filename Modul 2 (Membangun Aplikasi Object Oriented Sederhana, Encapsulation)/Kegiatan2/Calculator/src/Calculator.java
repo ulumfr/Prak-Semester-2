@@ -5,7 +5,6 @@ public class Calculator {
 
     private double diagonal1, diagonal2, sisi;
     private int pilih; 
-    private double keliling, luas;
 
     public double Keliling(){
         return keliling = sisi * 4;
