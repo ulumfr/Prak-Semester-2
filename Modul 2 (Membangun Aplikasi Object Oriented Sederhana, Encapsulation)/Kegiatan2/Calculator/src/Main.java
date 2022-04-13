@@ -9,15 +9,16 @@ public class Main {
     public void menuCalculator(){
         Calculator aa = new Calculator();
         Scanner input = new Scanner(System.in);
-        int pilih;
+        int inputMenu;
 
-        System.out.println("========= KELILING & LUAS BELAH KETUPAT =========\n");
+        System.out.println("\n========= KELILING & LUAS BELAH KETUPAT =========\n");
         System.out.println("1. Keliling Belah Ketupat\n2. Luas Belah Ketupat\n");
         System.out.print("Inputkan Nomor Menu : ");
-        pilih = input.nextInt();
-        if(pilih == 1 ){
+        inputMenu = input.nextInt();
+            
+        if(inputMenu == 1 ){
             aa.menuKeliling();
-        }else if (pilih == 2){
+        }else if (inputMenu == 2){
             aa.menuLuas();
         }else{
             System.out.println("Mohon Maaf Anda Salah Input");

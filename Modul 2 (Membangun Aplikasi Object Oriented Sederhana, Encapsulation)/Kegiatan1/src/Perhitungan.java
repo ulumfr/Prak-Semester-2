@@ -1,7 +1,7 @@
 public class Perhitungan {
 
     private int NilaiProgdas, NilaiKalkulus, NilaiOrkom;
-    private double hitungRata;
+    private double Hasil;
     
     public void setnilaiProgdas(int NilaiProgdas) {
         this.NilaiProgdas = NilaiProgdas;
@@ -27,8 +27,8 @@ public class Perhitungan {
         return NilaiOrkom;
     }
 
-    public double hitungrata(){
-        return hitungRata = ( NilaiProgdas + NilaiKalkulus + NilaiOrkom ) / 3.0 ;
+    public double hitungRata(){
+        return Hasil = ( NilaiProgdas + NilaiKalkulus + NilaiOrkom ) / 3.0 ;
     }
 
     public void cekNilai(){
@@ -39,8 +39,8 @@ public class Perhitungan {
         System.out.println("Kalkulus : " + getnilaiKalkulus());
         System.out.println("\n");
 
-        System.out.printf("Rata-rata : %.1f\n", hitungrata());
-        if(hitungRata >= 70){
+        System.out.printf("Rata-rata : %.1f\n", hitungRata());
+        if(Hasil >= 70){
             System.out.println("Status : LULUS\n");
         }else{
             System.out.println("Status : GAGAL\n");
