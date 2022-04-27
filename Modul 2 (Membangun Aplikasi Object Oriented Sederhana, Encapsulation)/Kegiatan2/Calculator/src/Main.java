@@ -7,23 +7,23 @@ public class Main {
     }
 
     public void menuCalculator(){
-        Calculator aa = new Calculator();
+        
         Scanner input = new Scanner(System.in);
+        CalcuOOP aw = new CalcuOOP();
+        Structured wa = new Structured();
         int inputMenu;
 
-        System.out.println("\n========= KELILING & LUAS BELAH KETUPAT =========\n");
-        System.out.println("1. Keliling Belah Ketupat\n2. Luas Belah Ketupat\n");
+        System.out.println("\n========= KALKULATOR BELAH KETUPAT =========\n");
+        System.out.println("1. OOP\n2. Terstruktur\n3. Exit\n");
         System.out.print("Inputkan Nomor Menu : ");
         inputMenu = input.nextInt();
             
         if(inputMenu == 1 ){
-            aa.menuKeliling();
-        }else if (inputMenu == 2){
-            aa.menuLuas();
-        }else{
-            System.out.println("Mohon Maaf Anda Salah Input");
-            System.out.println("\n");
-            menuCalculator();
+            aw.mainOOP();
+        }else if(inputMenu == 2){
+            wa.mainStructured();
+        }else if(inputMenu == 3){
+            System.exit(0);
         }
         input.close();
     }
