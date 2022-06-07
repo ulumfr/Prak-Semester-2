@@ -1,4 +1,4 @@
-package Device;
+package Kegiatan2.src.Device;
 
 public class Driver {
     public static void main(String[] args) {

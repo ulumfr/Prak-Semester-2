@@ -1,43 +1,32 @@
-package FightingGame;
+package Kegiatan3.src.FightingGame;
 
 public abstract class Hero {
-    private double healthPoint, attackDamage, realDamage, defense, damageTaken;
-    private int level = 1;
-    private boolean lifeStatus = true;
+    double healthPoint, attackDamage, realDamage, defense;
+    int level = 1;
+    boolean lifeStatus = true;
 
-    public void attack(
-        String P1_Name, String P2_Name, 
-        
-        double P1_attackDamage, double P2_defense, 
-        
-        double P2_health){
-
-            System.out.printf("\n=== %s Turn ===\n", P1_Name);
-            spawnIntro();
-            reviewDamage(P1_attackDamage, P2_defense);
-            setdamageTaken(P2_health - getrealDamage());
-            if (getdamageTaken() <= 0){
-                setdamageTaken(0);
-            }
-            System.out.printf("%s Real Damage\t: %.1f\n", P1_Name, getrealDamage());
-            System.out.printf("%s HP Remaining\t: %.1f\n", P2_Name, getdamageTaken());
-
+    public void attack(String P1_Name, String P2_Name, double P1_attackDamage, double P2_defense, double P2_health){
+        System.out.printf("\n=== %s Turn ===\n", P1_Name); spawnIntro();
+        reviewDamage(P1_attackDamage, P2_defense);
+        setrealDamage(P2_health - getrealDamage());
+        if (getrealDamage() <= 0){
+            setrealDamage(0);
         }
+        System.out.printf("%s HP Remaining\t: %.1f\n", P2_Name, getrealDamage());
+    }
     
     public void reviewDamage(double attackDamage, double defense){
         setrealDamage(attackDamage - defense); 
     }
     
-    public void checkStatus(int levels,String hero){
-        System.out.println("===" + hero + "===");
-        System.out.println("Level : " + levels);
-        System.out.printf("Attack Damage : %.1f\t\t\tDefense : %.1f\n", getattackDamage(), getdefense());
-        System.out.printf("Healt Point : %.1f\t\t\tLive Status : %b\n", gethealtPoint(), getstats());
+    public void checkStatus(String hero){
+        System.out.println("\n=== " + hero + " ===\n");
+        System.out.printf("Level : %d\n", getlevel());
+        System.out.printf("Attack Damage : %.1f\t\t\tLive Status : %b\n", getattackDamage(), getlifStatus());
+        System.out.printf("Healt Point : %.1f\t\t\tDefense : %.1f\n", gethealtPoint(), getdefense());
     }
     
     public abstract void spawnIntro(); 
-    public abstract void spawnHero();
-    public abstract void levelUP(int level);
 
     // setter gatteer
     public void setrealDamage(double realDamage){ 
@@ -60,7 +49,7 @@ public abstract class Hero {
         this.lifeStatus = lifeStatus;
     }
 
-    public boolean getstats(){ 
+    public boolean getlifStatus(){ 
         return lifeStatus;
     }
 
@@ -87,13 +76,4 @@ public abstract class Hero {
     public int getlevel(){ 
         return level;
     }
-
-    public void setdamageTaken(double damageTaken) {
-        this.damageTaken = damageTaken;
-    }
-
-    public double getdamageTaken() {
-        return damageTaken;
-    }
-
 }

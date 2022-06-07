@@ -1,4 +1,4 @@
-package Abstract;
+package Kegiatan1.src.Abstract;
 
 public class Kerucut extends BangunRuang{
     double LuasPermukaan, Volume;
@@ -18,11 +18,11 @@ public class Kerucut extends BangunRuang{
 
     void getLuasPermukaan(){
         LuasPermukaan = (3.14 * jari * (jari + s));
-        System.out.printf("Luas Permukaan Kerucut adalah %.2f", LuasPermukaan);
+        System.out.printf("Luas Permukaan Kerucut adalah %.2f\n", LuasPermukaan);
     }
 
     void getVolume(){
         Volume = (3.14 * jari * jari * tinggi * 1/3);
-        System.out.printf("Volume Kerucut adalah %.2f", Volume);
+        System.out.printf("Volume Kerucut adalah %.2f\n", Volume);
     }
 }

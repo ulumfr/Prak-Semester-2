@@ -1,4 +1,4 @@
-package Device;
+package Kegiatan2.src.Device;
 
 public class Specs {
     private Laptop Asus;

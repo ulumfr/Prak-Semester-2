@@ -1,4 +1,4 @@
-package Abstract;
+package Kegiatan1.src.Abstract;
 
 import java.util.Scanner;
 
