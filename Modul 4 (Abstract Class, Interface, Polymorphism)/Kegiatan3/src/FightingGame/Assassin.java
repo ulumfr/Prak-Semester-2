@@ -11,7 +11,7 @@ public class Assassin extends Hero implements CriticalDamage{
         setattackDamage(attackDamage);
 
         final double B_healthPoint = 90, B_defense = 15, B_attackDamage = 30;
-        for (int i = 1; i < level; i++){
+        for (int i = 0; i < level; i++){
             sethealthPoint(gethealtPoint() + B_healthPoint);
             setdefense(getdefense() + B_defense);
             setattackDamage(getattackDamage() + B_attackDamage);

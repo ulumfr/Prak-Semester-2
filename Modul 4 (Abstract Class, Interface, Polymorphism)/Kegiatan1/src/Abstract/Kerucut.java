@@ -16,13 +16,19 @@ public class Kerucut extends BangunRuang{
         this.s = s;
     }
 
-    void getLuasPermukaan(){
-        LuasPermukaan = (3.14 * jari * (jari + s));
-        System.out.printf("Luas Permukaan Kerucut adalah %.2f\n", LuasPermukaan);
+    @Override
+    public double getLuasPermukaan(){
+        return (3.14 * jari * (jari + s));
     }
 
-    void getVolume(){
-        Volume = (3.14 * jari * jari * tinggi * 1/3);
-        System.out.printf("Volume Kerucut adalah %.2f\n", Volume);
+    @Override
+    public double getVolume(){
+        return (3.14 * jari * jari * tinggi * 1/3);
+    }
+
+    public void displaymenu2(){
+        System.out.println("\n=== Kerucut ===\n");
+        System.out.printf("Luas Permukaan Kerucut adalah %.2f\n", getLuasPermukaan());
+        System.out.printf("Volume Kerucut adalah %.2f\n", getVolume());
     }
 }

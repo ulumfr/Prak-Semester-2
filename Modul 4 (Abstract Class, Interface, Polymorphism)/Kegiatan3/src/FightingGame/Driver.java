@@ -9,22 +9,23 @@ public class Driver {
         int pickHero1, pickHero2;
 
         Random r = new Random();
-        Assassin a = new Assassin(r.nextInt(15)+1);
-        Tank t = new Tank(r.nextInt(15)+1);
-        Mage m = new Mage(r.nextInt(15)+1);
+        Assassin a = new Assassin(r.nextInt(15) + 1); //
+        Tank t = new Tank(r.nextInt(15) + 1);
+        Mage m = new Mage(r.nextInt(15) + 1);
 
         do{
-            pickHero1 = r.nextInt(3)+1;
-            pickHero2 = r.nextInt(3)+1;
+            pickHero1 = r.nextInt(3) + 1;
+            pickHero2 = r.nextInt(3) + 1;
             
             if(pickHero1 == 1 && pickHero2 == 2 || pickHero1 == 2 && pickHero2 == 1){
-               a.checkStatus("Assassin");
-               t.checkStatus("Tank");
-               System.out.println("\n=====   The Fight Begins!   =====");
+                
+                a.checkStatus("Assassin");
+                t.checkStatus("Tank");
+                System.out.println("\n\n =============== Fight Begin ===============");
                
-               do{
+                do{
                    round++;
-                   System.out.printf("\n=========== Round  %d ===========", round);
+                   System.out.printf("=============== Round  %d ===============", round);
 
                    //Assassin Turn
                    if(a.getlifStatus()){
@@ -45,23 +46,23 @@ public class Driver {
                            a.setlifeStatus(false);
                        }
                    }
-               }while(a.getlifStatus() && t.getlifStatus());
+                }while(a.getlifStatus() && t.getlifStatus());
 
-               //Result
-               System.out.println("\n========= Match Result =========");
+                //Result
+                System.out.println("\n========= Match Result =========");
                 if(!a.getlifStatus() && t.getlifStatus()){
-                    System.out.println("Assasin Die\nTank Win");
+                    System.out.println("Assasin Die, Tank Win");
                 } else{
-                    System.out.println("Tank Die\nAssasin Win");
+                    System.out.println("Tank Die, Assasin Win");
                 }
            }else if(pickHero1 == 1 && pickHero2 == 3 || pickHero1 == 3 && pickHero2 == 1){
                 a.checkStatus("Assassin");
                 m.checkStatus("Mage");
-                System.out.println("=====   The Fight Begins!   =====");
+                System.out.println("\n\n=============== Fight Begins ===============");
                 
                 do{
                     round++;
-                    System.out.printf("\n=========== Round  %d ===========", round);
+                    System.out.printf("=============== Round  %d ===============", round);
 
                     //Assassin Turn
                     if(a.getlifStatus()){
@@ -85,20 +86,20 @@ public class Driver {
                 }while(a.getlifStatus() && m.getlifStatus());
 
                 //Result
-                System.out.println("\n========= Match Result =========");
+                System.out.println("\n=============== Match Result ===============");
                 if(!a.getlifStatus() && t.getlifStatus()){
-                    System.out.println("Assasin died in the Game\nMage Win the Game");
+                    System.out.println("Assasin Die, Mage Win");
                 } else{
-                    System.out.println("Mage died in the Game\nAssasin Win the Game");
+                    System.out.println("Mage Die, Assasin Win");
                 }
             }else {
                 t.checkStatus("Tank");
                 m.checkStatus("Mage");
-                System.out.println("=====   The Fight Begins!   =====");
+                System.out.println("\n\n=============== Fight Begin ===============");
                 
                 do{
                     round++;
-                    System.out.printf("\n=========== Round  %d ===========", round);
+                    System.out.printf("=============== Round  %d ===============", round);
 
                     //Tank Turn
                     if(t.getlifStatus()){
@@ -122,18 +123,13 @@ public class Driver {
                 }while(t.getlifStatus() && m.getlifStatus());
 
                 //Result
-                System.out.println("\n========= Match Result =========");
+                System.out.println("\n=============== Match Result ===============");
                 if(!a.getlifStatus() && t.getlifStatus()){
-                    System.out.println("Tank Die\nMage Win");
+                    System.out.println("Tank Die, Mage Win");
                 } else{
-                    System.out.println("Mage Die\nTank Win");
+                    System.out.println("Mage Die, Tank Win");
                 }
             }
         }while(pickHero1 == pickHero2);
     }
 }
-
-
-
-/* 
-    */

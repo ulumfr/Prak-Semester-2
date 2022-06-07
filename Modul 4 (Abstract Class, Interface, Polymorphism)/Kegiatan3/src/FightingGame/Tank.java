@@ -13,7 +13,7 @@ public class Tank extends Hero{
         setattackDamage(attackDamage);
 
         final double B_healthPoint = 200, B_defense = 15, B_attackDamage = 20;
-        for (int i = 1; i < level; i++){
+        for (int i = 0; i < level; i++){
             sethealthPoint(gethealtPoint() + B_healthPoint);
             setdefense(getdefense() + B_defense);
             setattackDamage(getattackDamage() + B_attackDamage);

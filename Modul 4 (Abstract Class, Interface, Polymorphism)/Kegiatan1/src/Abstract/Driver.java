@@ -19,18 +19,14 @@ public class Driver {
         System.out.println("\n==================================================");
         
         Kerucut k = new Kerucut();
-        System.out.println("\n=== Kerucut ===\n");
         k.setjari(r);
         k.sets(s);
         k.settinggi(t);
-        k.getLuasPermukaan();
-        k.getVolume();
+        k.displaymenu2();
 
         Bola b = new Bola();
-        System.out.println("\n=== Bola ===\n");
         b.setjari(r);
-        b.getLuasPermukaan();
-        b.getVolume();
+        b.displaymenu();
         
         input.close();
         System.out.println("\n==================================================\n");

@@ -12,7 +12,7 @@ public class Mage extends Hero implements MagicalDamage{
         setattackDamage(attackDamage);
 
         final double B_healthPoint = 85, B_defense = 10, B_attackDamage = 35;
-        for (int i = 1; i < level; i++){
+        for (int i = 0; i < level; i++){
             sethealthPoint(gethealtPoint() + B_healthPoint);
             setdefense(getdefense() + B_defense);
             setattackDamage(getattackDamage() + B_attackDamage);
