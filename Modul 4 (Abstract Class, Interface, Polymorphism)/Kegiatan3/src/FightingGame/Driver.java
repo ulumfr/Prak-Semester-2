@@ -51,9 +51,9 @@ public class Driver {
                 //Result
                 System.out.println("\n========= Match Result =========");
                 if(!a.getlifStatus() && t.getlifStatus()){
-                    System.out.println("Assasin Die, Tank Win");
+                    System.out.println("Assasin Die, Tank Win YAY");
                 } else{
-                    System.out.println("Tank Die, Assasin Win");
+                    System.out.println("Tank Die, Assasin Win YAY");
                 }
            }else if(pickHero1 == 1 && pickHero2 == 3 || pickHero1 == 3 && pickHero2 == 1){
                 a.checkStatus("Assassin");
@@ -88,9 +88,9 @@ public class Driver {
                 //Result
                 System.out.println("\n=============== Match Result ===============");
                 if(!a.getlifStatus() && t.getlifStatus()){
-                    System.out.println("Assasin Die, Mage Win");
+                    System.out.println("Assasin Die, Mage Win YAY");
                 } else{
-                    System.out.println("Mage Die, Assasin Win");
+                    System.out.println("Mage Die, Assasin Win YAY");
                 }
             }else {
                 t.checkStatus("Tank");
@@ -125,9 +125,9 @@ public class Driver {
                 //Result
                 System.out.println("\n=============== Match Result ===============");
                 if(!a.getlifStatus() && t.getlifStatus()){
-                    System.out.println("Tank Die, Mage Win");
+                    System.out.println("Tank Die, Mage Win YAY");
                 } else{
-                    System.out.println("Mage Die, Tank Win");
+                    System.out.println("Mage Die, Tank Win YAY");
                 }
             }
         }while(pickHero1 == pickHero2);
