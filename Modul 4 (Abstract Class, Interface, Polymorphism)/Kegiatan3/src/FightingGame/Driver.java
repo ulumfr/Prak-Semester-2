@@ -9,7 +9,7 @@ public class Driver {
         int pickHero1, pickHero2;
 
         Random r = new Random();
-        Assassin a = new Assassin(r.nextInt(15) + 1); //
+        Assassin a = new Assassin(r.nextInt(15) + 1);
         Tank t = new Tank(r.nextInt(15) + 1);
         Mage m = new Mage(r.nextInt(15) + 1);
 
