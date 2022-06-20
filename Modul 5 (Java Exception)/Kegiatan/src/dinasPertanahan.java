@@ -1,9 +1,8 @@
-package Kegiatan1.src;
+package Kegiatan.src;
 
 public class dinasPertanahan {
     private String alamat;
-    private int panjangTanah;
-    private int luasTanah;
+    private int panjangTanah, luasTanah;
 
     public String getalamat() {
         return alamat;

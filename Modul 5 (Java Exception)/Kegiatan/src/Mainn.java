@@ -1,10 +1,10 @@
-package Kegiatan1.src;
+package Kegiatan.src;
 
 import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Pertanahan {
+public class Mainn {
     public static void main(String[] args) throws IOException{
         dinasPertanahan p = new dinasPertanahan();
         File f1 = new File("dinasPertanahan.txt");

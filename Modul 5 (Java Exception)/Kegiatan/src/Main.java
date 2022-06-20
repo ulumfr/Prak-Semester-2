@@ -1,4 +1,4 @@
-package Kegiatan1.src;
+package Kegiatan.src;
 
 import java.util.Scanner;
 
