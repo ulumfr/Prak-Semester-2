@@ -24,7 +24,7 @@ public class Mainn {
                 p.setluasTanah(input.nextInt());
 
                 FileWriter f2 = new FileWriter(f1, true);
-                f2.write(p.getalamat() + "\n"  + p.getluasTanah() + "\n" + p.getpanjangTanah() + "\n");
+                f2.write(p.getalamat() + "\n"  + p.getpanjangTanah() + "\n" + p.getluasTanah() + "\n");
                 f2.close();
             } catch (IOException e) {
                 System.out.println(e);
@@ -49,7 +49,6 @@ public class Mainn {
             System.out.printf("===== Informasi tanah ke %d =====\n", urutan);
             System.out.println("Alamat Tanah : " + baris);
             System.out.println("Panjang Tanah: " + read.readLine());
-            System.out.println("Lebar Tanah  : " + read.readLine());
             System.out.println("Luas Tanah   : " + read.readLine());
         }
         read.close();

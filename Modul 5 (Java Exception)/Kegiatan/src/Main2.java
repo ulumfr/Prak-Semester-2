@@ -18,7 +18,7 @@ public class Main2 {
     }
 
     public static void Menu() throws Exception {
-        System.out.println("======== Dinas Pertanahan UMM ========");
+        System.out.println("\n============== Dinas Pertanahan UMM ==============");
         System.out.println("\n1. Create\n2. Read\n3. Exit\n");
         System.out.print("Pilih Menu Anda : ");
 
@@ -33,7 +33,6 @@ public class Main2 {
     }
 
     public static void input() throws Exception {
-
         try {
             FileWriter fw = new FileWriter("Tanah.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -42,7 +41,7 @@ public class Main2 {
             int panjang_tanah, luas_tanah;
 
             while (Status) {
-                
+                System.out.println("\n==================================================");
                 System.out.printf("Masukan Alamat\t\t: ");
                 dP.setalamat(input.next());
                 alamat = dP.getalamat();
@@ -58,10 +57,9 @@ public class Main2 {
                 String tulis = String.format("%s, %s, %s\n", alamat, panjang_tanah, luas_tanah);
                 bw.write(tulis);
 
-                System.out.print("Apakah Ingin Input Lagi? ");
+                System.out.print("Apakah Ingin Input Lagi (y/n) ?  ");
                 next = input.next();
                 Status = next.equalsIgnoreCase("y");
-
             }
             bw.close();
         } catch (InputMismatchException a) {
@@ -70,11 +68,9 @@ public class Main2 {
          Menu();
         }
         input.close();
-
     }
 
     public static void display() throws Exception {
-
         try{
             FileReader fr = new FileReader("Tanah.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -83,6 +79,7 @@ public class Main2 {
 
             int i = 1;
 
+            System.out.println("\n==================================================");
             System.out.printf("%-2s %-20s %-15s %-15s\n", "No", "Alamat", "Panjang Tanah", "Luas Tanah");
             
             //Show Data
@@ -100,12 +97,11 @@ public class Main2 {
                 baca = br.readLine();
             }
             br.close(); fr.close();
-
+            System.out.println("==================================================");
         } catch (FileNotFoundException b) {
             System.err.println(b); Menu();
         } finally {
          Menu();
         }
     }
-
 }
