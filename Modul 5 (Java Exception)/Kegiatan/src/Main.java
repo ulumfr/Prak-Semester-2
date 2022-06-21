@@ -1,44 +1,106 @@
 package Kegiatan.src;
 
+import java.io.*;
+import java.util.InputMismatchException;
+import java.util.StringTokenizer;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        dinasPertanahan dP = new dinasPertanahan();
+    
+    static dinasPertanahan dP = new dinasPertanahan();
+    static Scanner input = new Scanner(System.in);
 
-        boolean status = true; 
-        int a = 0;
-        String alamat[] = new String[3];
-        int panjang_tanah[] = new int[3];
-        int luas_tanah[] = new int[3];
+    static boolean Status = true;
 
-        try {
-            System.out.println("======== Dinas Pertanahan UMM ========");
-            while(status){
-                int urutan = a + 1;
-                
-                System.out.println("\nData ke- " + urutan);
-                System.out.printf("Masukan Alamat\t\t: ");
-                dP.setalamat(input.next());
-                alamat[a] = dP.getalamat();
+    public static void main(String[] args) throws Exception{
+        Menu();
+    }
 
+    public static void Menu() throws Exception {
+        System.out.println("\n============== Dinas Pertanahan UMM ==============");
+        System.out.println("\n1. Create\n2. Read\n3. Exit\n");
+        System.out.print("Pilih Menu Anda : ");
+
+        int Menu = input.nextInt();
+
+        switch (Menu){
+            case 1 : input(); Menu(); break;
+            case 2 : display(); Menu(); break;
+            case 3 : System.exit(0); break;
+            default : System.out.println("Mohon Maaf Pilihan Anda Salah!"); Menu();
+        }
+    }
+
+    public static void input() throws Exception {
+        FileWriter fw = new FileWriter("Tanah.txt", true);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        String alamat;
+        int panjang_tanah, luas_tanah;
+
+        System.out.println("\n==================================================");
+        System.out.printf("\nMasukan Alamat\t\t: ");
+        dP.setalamat(input.next());
+        alamat = dP.getalamat();
+
+        do {
+            Status = false;
+            try {
                 System.out.printf("Masukan Panjang Tanah\t: ");
                 dP.setpanjangTanah(input.nextInt());
-                panjang_tanah[a] = dP.getpanjangTanah();
+                panjang_tanah = dP.getpanjangTanah();
 
                 System.out.printf("Masukan Luas Tanah\t: ");
                 dP.setluasTanah(input.nextInt());
-                luas_tanah[a] = dP.getluasTanah();
+                luas_tanah = dP.getluasTanah();
 
-                a++;
+                String tulis = String.format("%s, %s, %s\n", alamat, panjang_tanah, luas_tanah);
+                    
+                bw.write(tulis); bw.close();
+            } catch (InputMismatchException a) {
+                System.err.println("\n\nInputan Harus Integer\n");
+                Status = true;
+                input.nextLine();
+            } finally {
+                Menu();
             }
-        }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("\nMelebihi Array ");
-    
-        }finally{
-            System.out.println("\nStopped");
-        }
+        } while (Status);
         input.close();
+    }
+
+    public static void display() throws Exception {
+        try{
+            FileReader fr = new FileReader("Tanah.txt");
+            BufferedReader br = new BufferedReader(fr);
+            
+            String baca = br.readLine();
+
+            int No = 1;
+
+            System.out.println("\n==================================================");
+            System.out.printf("%-2s %-20s %-15s %-15s\n", "No", "Alamat", "Panjang Tanah", "Luas Tanah");
+            
+            //Show Data
+            while (baca != null) {
+                StringTokenizer st = new StringTokenizer(baca, ",");
+
+                String alamat, panjang_tanah, luas_tanah;
+
+                alamat = st.nextToken();
+                panjang_tanah = st.nextToken();
+                luas_tanah = st.nextToken();
+
+                //Output 
+                System.out.printf("%2d %-20s %-15s %-15s\n", No++, alamat, panjang_tanah, luas_tanah);
+                baca = br.readLine();
+            }
+            br.close(); fr.close();
+            System.out.println("==================================================");
+        } catch (FileNotFoundException b) {
+            System.err.println("\n\nFile Tidak Ditemukan\n"); 
+            Menu();
+        } finally {
+         Menu();
+        }
     }
 }
