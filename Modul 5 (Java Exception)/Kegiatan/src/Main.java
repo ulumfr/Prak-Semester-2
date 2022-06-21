@@ -9,11 +9,11 @@ public class Main {
 
         boolean status = true; 
         int a = 0;
-        try {
-            String alamat[] = new String[3];
-            int panjang_tanah[] = new int[3];
-            int luas_tanah[] = new int[3];
+        String alamat[] = new String[3];
+        int panjang_tanah[] = new int[3];
+        int luas_tanah[] = new int[3];
 
+        try {
             System.out.println("======== Dinas Pertanahan UMM ========");
             while(status){
                 int urutan = a + 1;
@@ -34,10 +34,10 @@ public class Main {
                 a++;
             }
         }catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Exception Thrown : " + e);
-            status = false;
+            System.out.println("\nMelebihi Array ");
+    
         }finally{
-            System.out.println("Program STOP (Melebihi Inputan Data)");
+            System.out.println("\nStopped");
         }
         input.close();
     }
