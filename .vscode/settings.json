@@ -1,5 +1,8 @@
 {
     "java.project.sourcePaths": [
-        "Modul 5 (Java Exception)/Kegiatan/src"
+        "Modul 5 (Java Exception)/Kegiatan/src",
+        "Modul 4 (Abstract Class, Interface, Polymorphism)/Kegiatan3/src/FightingGame",
+        "Modul 4 (Abstract Class, Interface, Polymorphism)/Kegiatan2/src/Device",
+        "Modul 4 (Abstract Class, Interface, Polymorphism)/Kegiatan1/src/Abstract"
     ]
 }

@@ -1,5 +1,3 @@
-package Kegiatan2.src.Device;
-
 public class Laptop {
     private String Name;
     private String Specs1;

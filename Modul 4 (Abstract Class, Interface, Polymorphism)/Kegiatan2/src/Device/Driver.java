@@ -1,5 +1,3 @@
-package Kegiatan2.src.Device;
-
 public class Driver {
     public static void main(String[] args) {
         Laptop s = new Laptop("Asus Vivobook Ultra 14 M413DA","AMD Ryzen 7 3700U Mobile Processor");

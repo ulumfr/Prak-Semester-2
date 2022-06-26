@@ -1,5 +1,3 @@
-package Kegiatan3.src.FightingGame;
-
 import java.util.Random;
 
 public class Tank extends Hero{

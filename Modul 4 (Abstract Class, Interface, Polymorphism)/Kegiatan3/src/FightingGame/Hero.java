@@ -1,5 +1,3 @@
-package Kegiatan3.src.FightingGame;
-
 public abstract class Hero {
     double healthPoint, attackDamage, realDamage, defense;
     int level = 1;
