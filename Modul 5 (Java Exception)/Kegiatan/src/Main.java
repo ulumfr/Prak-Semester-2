@@ -1,3 +1,5 @@
+package Kegiatan.src;
+
 import java.io.*;
 import java.util.InputMismatchException;
 import java.util.StringTokenizer;

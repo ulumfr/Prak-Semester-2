@@ -1,3 +1,5 @@
+package Kegiatan1.src.Abstract;
+
 public class Bola extends BangunRuang{
     int jari;
 

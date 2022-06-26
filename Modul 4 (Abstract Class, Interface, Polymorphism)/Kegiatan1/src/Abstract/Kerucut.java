@@ -1,3 +1,5 @@
+package Kegiatan1.src.Abstract;
+
 public class Kerucut extends BangunRuang{
     double LuasPermukaan, Volume;
     int jari, tinggi, s;
