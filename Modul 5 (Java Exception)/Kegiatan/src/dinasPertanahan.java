@@ -1,5 +1,3 @@
-package Kegiatan.src;
-
 public class dinasPertanahan {
     private String alamat;
     private int panjangTanah, luasTanah;
