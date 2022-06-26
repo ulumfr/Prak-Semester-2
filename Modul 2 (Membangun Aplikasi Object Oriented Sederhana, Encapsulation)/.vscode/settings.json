@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "Kegiatan1/src",
+        "Kegiatan2/Calculator/src",
+        "Kegiatan2/Konversi/src"
+    ]
+}
