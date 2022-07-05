@@ -55,7 +55,6 @@ public class Main extends Application{
     private final TextField add_waktu = new TextField();
     private final TextField add_ruang = new TextField();
 
-
     private final Button add_button = new Button("Add");
     private final Button update_button = new Button("Update");
     private final Button delete_button = new Button("Delete"); 
