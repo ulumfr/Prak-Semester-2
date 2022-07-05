@@ -18,7 +18,6 @@ public class Jadwal {
         this.ruang = new SimpleStringProperty(ruang);
     }
 
-    //Dosen
     public String getDosen() {
         return dosen.get();
     }
@@ -26,7 +25,6 @@ public class Jadwal {
         this.dosen.set(dosen);
     }
         
-    //Matkul
     public String getMatkul() {
         return matkul.get();
     }
@@ -34,7 +32,6 @@ public class Jadwal {
         this.matkul.set(matkul);
     }
 
-    //GKB
     public String getGKB() {
         return gkb.get();
     }
@@ -42,7 +39,6 @@ public class Jadwal {
         this.gkb.set(gkb);
     }
 
-    //Waktu
     public String getWaktu() {
         return waktu.get();
     }
@@ -50,14 +46,10 @@ public class Jadwal {
         this.waktu.set(waktu);
     }
         
-    //Ruang
     public String getRuang() {
         return ruang.get();
     }
     public void setRuang(String ruang) {
         this.ruang.set(ruang);
     }
-    
 }
-    
-

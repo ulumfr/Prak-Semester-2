@@ -5,6 +5,8 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javafx.event.ActionEvent;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
@@ -15,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,34 +41,32 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-    //Hbox
-    private final HBox hbox = new HBox();
+    final HBox hbox = new HBox();
 
-    //Vbox
-    private final VBox vbox = new VBox();
+    final VBox vbox = new VBox();
 
-    //TableColomn
     private TableColumn <Jadwal, String> col_dosen = new TableColumn<>("Dosen");
     private TableColumn <Jadwal, String> col_matkul = new TableColumn<>("Matkul");
     private TableColumn <Jadwal, String> col_gkb = new TableColumn<>("GKB");
     private TableColumn <Jadwal, String> col_waktu = new TableColumn<>("Waktu");
     private TableColumn <Jadwal, String> col_ruang = new TableColumn<>("Ruangan");
     
-    //TextField
     private final TextField add_dosen = new TextField();
     private final TextField add_matkul = new TextField();
     private final TextField add_gkb = new TextField();
     private final TextField add_waktu = new TextField();
     private final TextField add_ruang = new TextField();
 
-    //Button
     private final Button add_button = new Button("Add");
     private final Button update_button = new Button("Update");
     private final Button delete_button = new Button("Delete"); 
     private final Button exit_button = new Button("Exit");
 
+    private final Label label = new Label("Jadwal Kuliah");
+
     private final TableView <Jadwal> Table = new TableView<>();
-    public static ObservableList <Jadwal> Data = FXCollections.observableArrayList();
+
+    private final ObservableList <Jadwal> Data = FXCollections.observableArrayList();
     
     public static void main(String[] args) {
         launch(args);
@@ -78,18 +79,13 @@ public class Main extends Application{
         stage.setHeight(600);
         scene.setFill(Color.DARKGRAY);
         
-        final Label label = new Label("Jadwal Kuliah");
         label.setFont(Font.font("Arial", FontWeight.BOLD, 30));
 
         Table.setEditable(true);
 
-        kolom();
-        input();
+        kolom(); input();
         
-        add();
-        update();
-        delete();
-        exit();
+        add(); update(); delete(); exit();
 
         hbox.getChildren().addAll(add_dosen, add_matkul, add_gkb, add_waktu, add_ruang, add_button, update_button, delete_button, exit_button);
         hbox.setSpacing(10);
@@ -134,7 +130,7 @@ public class Main extends Application{
         
         add_gkb.setPromptText("GKB");
         add_gkb.setMaxWidth(col_gkb.getPrefWidth());
-
+    
         add_waktu.setPromptText("Waktu");
         add_waktu.setMaxWidth(col_waktu.getPrefWidth());
 
@@ -144,20 +140,46 @@ public class Main extends Application{
 
     public void add(){
         BackgroundFill bf = new BackgroundFill(Color.AQUAMARINE, CornerRadii.EMPTY, Insets.EMPTY);
-        BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
         Background bg = new Background(bf);
+        BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
         Border b = new Border(bs);
 
         add_button.setBackground(bg);
         add_button.setTextFill(Color.BLACK);
-
         add_button.setBorder(b);
+        add_button.setOnAction((ActionEvent e) -> {
+            String dosen = add_dosen.getText();
+            String matkul = add_matkul.getText();
+            String gkb = add_gkb.getText();
+            String wwaktu = add_waktu.getText();
+            String ruang = add_ruang.getText();
+
+            if(dosen.isEmpty() || matkul.isEmpty() || gkb.isEmpty() || wwaktu.isEmpty() || ruang.isEmpty()){
+                System.out.println("Inputan Tidak Boleh Ada Yang Kosong");
+            }else{
+                System.out.println("Data Berhasil di tambahkan");
+                Data.add(new Jadwal (
+                    add_dosen.getText(), 
+                    add_matkul.getText(),
+                    add_gkb.getText(), 
+                    add_waktu.getText(), 
+                    add_ruang.getText()
+                    ));
+                add_dosen.clear();
+                add_matkul.clear();
+                add_gkb.clear();
+                add_waktu.clear();
+                add_ruang.clear();
+            }
+        });
+
+        
     }
 
     public void update(){
         BackgroundFill bf = new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY);
-        BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
         Background bg = new Background(bf);
+        BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
         Border b = new Border(bs);
 
         update_button.setBackground(bg);
@@ -167,8 +189,8 @@ public class Main extends Application{
 
     public void delete(){
         BackgroundFill bf = new BackgroundFill(Color.CRIMSON, CornerRadii.EMPTY, Insets.EMPTY);
-        BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
         Background bg = new Background(bf);
+        BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
         Border b = new Border(bs);
 
         delete_button.setBackground(bg);
@@ -178,8 +200,8 @@ public class Main extends Application{
 
     public void exit(){
         BackgroundFill bf = new BackgroundFill(Color.LIGHTYELLOW, CornerRadii.EMPTY, Insets.EMPTY);
-        BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
         Background bg = new Background(bf);
+        BorderStroke bs = new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT);
         Border b = new Border(bs);
 
         exit_button.setBackground(bg);
