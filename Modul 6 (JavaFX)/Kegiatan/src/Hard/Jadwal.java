@@ -10,12 +10,12 @@ public class Jadwal {
     private SimpleStringProperty waktu;
     private SimpleStringProperty ruang;
 
-    public Jadwal (String dosen, String matkul, String gkb, String waktu, String ruang){
-        this.dosen = new SimpleStringProperty(dosen);
-        this.matkul = new SimpleStringProperty(matkul);
-        this.gkb = new SimpleStringProperty(gkb);
-        this.waktu = new SimpleStringProperty(waktu);
-        this.ruang = new SimpleStringProperty(ruang);
+    public Jadwal (String t_dosen, String t_matkul, String t_gkb, String t_waktu, String t_ruang){
+        this.dosen = new SimpleStringProperty(t_dosen);
+        this.matkul = new SimpleStringProperty(t_matkul);
+        this.gkb = new SimpleStringProperty(t_gkb);
+        this.waktu = new SimpleStringProperty(t_waktu);
+        this.ruang = new SimpleStringProperty(t_ruang);
     }
 
     public String getDosen() {

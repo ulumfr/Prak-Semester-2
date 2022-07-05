@@ -12,12 +12,12 @@ import javafx.geometry.Pos;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,8 +31,6 @@ import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-import javafx.scene.paint.Color;
 
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -49,13 +47,14 @@ public class Main extends Application{
     private TableColumn <Jadwal, String> col_matkul = new TableColumn<>("Matkul");
     private TableColumn <Jadwal, String> col_gkb = new TableColumn<>("GKB");
     private TableColumn <Jadwal, String> col_waktu = new TableColumn<>("Waktu");
-    private TableColumn <Jadwal, String> col_ruang = new TableColumn<>("Ruangan");
+    private TableColumn <Jadwal, String> col_ruang = new TableColumn<>("Ruang");
     
     private final TextField add_dosen = new TextField();
     private final TextField add_matkul = new TextField();
     private final TextField add_gkb = new TextField();
     private final TextField add_waktu = new TextField();
     private final TextField add_ruang = new TextField();
+
 
     private final Button add_button = new Button("Add");
     private final Button update_button = new Button("Update");
@@ -114,7 +113,7 @@ public class Main extends Application{
         col_waktu.setCellValueFactory(new PropertyValueFactory<>("Waktu"));
         col_waktu.setMinWidth(200);
 
-        col_ruang.setCellValueFactory(new PropertyValueFactory<>("Ruangan"));
+        col_ruang.setCellValueFactory(new PropertyValueFactory<>("Ruang"));
         col_ruang.setMinWidth(200);
 
         Table.getColumns().addAll(col_dosen, col_matkul, col_gkb, col_waktu, col_ruang);
@@ -172,8 +171,6 @@ public class Main extends Application{
                 add_ruang.clear();
             }
         });
-
-        
     }
 
     public void update(){
@@ -185,6 +182,22 @@ public class Main extends Application{
         update_button.setBackground(bg);
         update_button.setTextFill(Color.BLACK);
         update_button.setBorder(b);
+        update_button.setOnAction((ActionEvent e) -> {
+            System.out.println("Data Berhasil diubah");
+            Table.getItems().remove(Table.getSelectionModel().getSelectedIndex());
+            Data.add(new Jadwal(
+                add_dosen.getText(), 
+                add_matkul.getText(), 
+                add_gkb.getText(), 
+                add_waktu.getText(), 
+                add_ruang.getText()
+                ));
+            add_dosen.clear();
+            add_matkul.clear();
+            add_gkb.clear();
+            add_waktu.clear();
+            add_ruang.clear();
+        });
     }
 
     public void delete(){
@@ -196,6 +209,10 @@ public class Main extends Application{
         delete_button.setBackground(bg);
         delete_button.setTextFill(Color.BLACK);
         delete_button.setBorder(b);
+        delete_button.setOnAction((ActionEvent e) -> {
+            System.out.println("Data Berhasil dihapus");
+            Table.getItems().removeAll(Table.getSelectionModel().getSelectedItems());
+        });
     }
 
     public void exit(){
@@ -207,5 +224,9 @@ public class Main extends Application{
         exit_button.setBackground(bg);
         exit_button.setTextFill(Color.BLACK);
         exit_button.setBorder(b);
+        exit_button.setOnAction((ActionEvent e) -> {
+            System.out.println("Keluar");
+            System.exit(0);
+        });
     }
 }
