@@ -1,58 +1,63 @@
 package src.Hard;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Jadwal {
-    private int id, gkb;
-    private String dosen, matkul, waktu, ruang;
+    
+    private SimpleStringProperty dosen;
+    private SimpleStringProperty matkul;
+    private SimpleStringProperty gkb;
+    private SimpleStringProperty waktu;
+    private SimpleStringProperty ruang;
 
-    public Jadwal (int id, String dosen, String matkul, int gkb, String waktu, String ruang){
-        this.id = id;
-        this.dosen = dosen;
-        this.matkul = matkul;
-        this.gkb = gkb;
-        this.waktu = waktu;
-        this.ruang = ruang;
+    public Jadwal (String dosen, String matkul, String gkb, String waktu, String ruang){
+        this.dosen = new SimpleStringProperty(dosen);
+        this.matkul = new SimpleStringProperty(matkul);
+        this.gkb = new SimpleStringProperty(gkb);
+        this.waktu = new SimpleStringProperty(waktu);
+        this.ruang = new SimpleStringProperty(ruang);
     }
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    //Dosen
     public String getDosen() {
-        return dosen;
+        return dosen.get();
     }
     public void setDosen(String dosen) {
-        this.dosen = dosen;
+        this.dosen.set(dosen);
     }
-
+        
+    //Matkul
     public String getMatkul() {
-        return matkul;
+        return matkul.get();
     }
     public void setMatkul(String matkul) {
-        this.matkul = matkul;
+        this.matkul.set(matkul);
     }
 
-    public int getGKB() {
-        return gkb;
+    //GKB
+    public String getGKB() {
+        return gkb.get();
     }
-    public void setGKB(int gkb) {
-        this.gkb = gkb;
+    public void setGKB(String gkb) {
+        this.gkb.set(gkb);
     }
 
+    //Waktu
     public String getWaktu() {
-        return waktu;
+        return waktu.get();
     }
     public void setWaktu(String waktu) {
-        this.waktu = waktu;
+        this.waktu.set(waktu);
     }
-
+        
+    //Ruang
     public String getRuang() {
-        return ruang;
+        return ruang.get();
     }
     public void setRuang(String ruang) {
-        this.ruang = ruang;
+        this.ruang.set(ruang);
     }
-
+    
 }
+    
+
