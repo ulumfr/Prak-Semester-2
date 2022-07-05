@@ -2,6 +2,7 @@ package src.Hard;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -24,10 +25,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
+
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -43,11 +46,11 @@ public class Main extends Application{
 
     final VBox vbox = new VBox();
 
-    private TableColumn <Jadwal, String> col_dosen = new TableColumn<>("Dosen");
-    private TableColumn <Jadwal, String> col_matkul = new TableColumn<>("Matkul");
-    private TableColumn <Jadwal, String> col_gkb = new TableColumn<>("GKB");
-    private TableColumn <Jadwal, String> col_waktu = new TableColumn<>("Waktu");
-    private TableColumn <Jadwal, String> col_ruang = new TableColumn<>("Ruang");
+    private final TableColumn <Jadwal, String> col_dosen = new TableColumn<>("Dosen");
+    private final TableColumn <Jadwal, String> col_matkul = new TableColumn<>("Matkul");
+    private final TableColumn <Jadwal, String> col_gkb = new TableColumn<>("GKB");
+    private final TableColumn <Jadwal, String> col_waktu = new TableColumn<>("Waktu");
+    private final TableColumn <Jadwal, String> col_ruang = new TableColumn<>("Ruang");
     
     private final TextField add_dosen = new TextField();
     private final TextField add_matkul = new TextField();
@@ -60,12 +63,12 @@ public class Main extends Application{
     private final Button delete_button = new Button("Delete"); 
     private final Button exit_button = new Button("Exit");
 
-    private final Label label = new Label("Jadwal Kuliah");
+    private final Label label = new Label("Jadwal Kuliah Kelas J");
 
     private final TableView <Jadwal> Table = new TableView<>();
 
     private final ObservableList <Jadwal> Data = FXCollections.observableArrayList();
-    
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -86,10 +89,11 @@ public class Main extends Application{
         add(); update(); delete(); exit();
 
         hbox.getChildren().addAll(add_dosen, add_matkul, add_gkb, add_waktu, add_ruang, add_button, update_button, delete_button, exit_button);
+        hbox.setAlignment(Pos.CENTER);
         hbox.setSpacing(10);
         
         vbox.setAlignment(Pos.CENTER);
-        vbox.setSpacing(18);
+        vbox.setSpacing(20);
         vbox.setPadding(new Insets(15, 15, 15, 15));
         vbox.getChildren().addAll(label, Table, hbox);
 
@@ -128,12 +132,23 @@ public class Main extends Application{
         
         add_gkb.setPromptText("GKB");
         add_gkb.setMaxWidth(col_gkb.getPrefWidth());
-    
+        
         add_waktu.setPromptText("Waktu");
         add_waktu.setMaxWidth(col_waktu.getPrefWidth());
-
+        
         add_ruang.setPromptText("Ruang");
         add_ruang.setMaxWidth(col_ruang.getPrefWidth());
+    }
+
+    public boolean intGKB(){
+        try{
+            Integer.parseInt(add_gkb.getText());
+            return true;
+        }catch(NumberFormatException ex){
+            return false;
+        }finally{
+            System.out.println("Validation Complete");
+        }
     }
 
     public void add(){
@@ -149,25 +164,29 @@ public class Main extends Application{
             String dosen = add_dosen.getText();
             String matkul = add_matkul.getText();
             String gkb = add_gkb.getText();
-            String wwaktu = add_waktu.getText();
+            String waktu = add_waktu.getText();
             String ruang = add_ruang.getText();
 
-            if(dosen.isEmpty() || matkul.isEmpty() || gkb.isEmpty() || wwaktu.isEmpty() || ruang.isEmpty()){
+            if(dosen.isEmpty() || matkul.isEmpty() || gkb.isEmpty() || waktu.isEmpty() || ruang.isEmpty()){
                 System.out.println("Inputan Tidak Boleh Ada Yang Kosong");
             }else{
-                System.out.println("Data Berhasil di tambahkan");
-                Data.add(new Jadwal (
-                    add_dosen.getText(), 
-                    add_matkul.getText(),
-                    add_gkb.getText(), 
-                    add_waktu.getText(), 
-                    add_ruang.getText()
-                    ));
-                add_dosen.clear();
-                add_matkul.clear();
-                add_gkb.clear();
-                add_waktu.clear();
-                add_ruang.clear();
+                if(intGKB()){
+                    System.out.println("Data Berhasil di tambahkan");
+                    Data.add(new Jadwal (
+                        add_dosen.getText(), 
+                        add_matkul.getText(),
+                        add_gkb.getText(), 
+                        add_waktu.getText(), 
+                        add_ruang.getText()
+                        ));
+                    add_dosen.clear();
+                    add_matkul.clear();
+                    add_gkb.clear();
+                    add_waktu.clear();
+                    add_ruang.clear();
+                }else{
+                    System.out.println("Alert");
+                }
             }
         });
     }
@@ -182,20 +201,24 @@ public class Main extends Application{
         update_button.setTextFill(Color.BLACK);
         update_button.setBorder(b);
         update_button.setOnAction((ActionEvent e) -> {
-            System.out.println("Data Berhasil diubah");
-            Table.getItems().remove(Table.getSelectionModel().getSelectedIndex());
-            Data.add(new Jadwal(
-                add_dosen.getText(), 
-                add_matkul.getText(), 
-                add_gkb.getText(), 
-                add_waktu.getText(), 
-                add_ruang.getText()
-                ));
-            add_dosen.clear();
-            add_matkul.clear();
-            add_gkb.clear();
-            add_waktu.clear();
-            add_ruang.clear();
+            if(intGKB()){
+                System.out.println("Data Berhasil diubah");
+                Table.getItems().remove(Table.getSelectionModel().getSelectedIndex());
+                Data.add(new Jadwal(
+                    add_dosen.getText(), 
+                    add_matkul.getText(), 
+                    add_gkb.getText(), 
+                    add_waktu.getText(), 
+                    add_ruang.getText()
+                    ));
+                add_dosen.clear();
+                add_matkul.clear();
+                add_gkb.clear();
+                add_waktu.clear();
+                add_ruang.clear();
+            }else{
+                System.out.println("Alert");
+            }
         });
     }
 
