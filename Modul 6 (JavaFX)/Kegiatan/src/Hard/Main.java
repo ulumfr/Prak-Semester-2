@@ -1,7 +1,7 @@
 package src.Hard;
 
 import javafx.application.Application;
-
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -226,6 +226,7 @@ public class Main extends Application{
         exit_button.setBorder(b);
         exit_button.setOnAction((ActionEvent e) -> {
             System.out.println("Keluar");
+            Platform.exit();
             System.exit(0);
         });
     }
