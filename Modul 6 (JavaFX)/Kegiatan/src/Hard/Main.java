@@ -19,6 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -43,7 +45,6 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
     final HBox hbox = new HBox();
-
     final VBox vbox = new VBox();
 
     private final TableColumn <Jadwal, String> col_dosen = new TableColumn<>("Dosen");
@@ -64,9 +65,9 @@ public class Main extends Application{
     private final Button exit_button = new Button("Exit");
 
     private final Label label = new Label("Jadwal Kuliah Kelas J");
+    private final Alert alert = new Alert(AlertType.NONE);
 
     private final TableView <Jadwal> Table = new TableView<>();
-
     private final ObservableList <Jadwal> Data = FXCollections.observableArrayList();
 
     public static void main(String[] args) {
@@ -147,7 +148,7 @@ public class Main extends Application{
         }catch(NumberFormatException ex){
             return false;
         }finally{
-            System.out.println("Validation Complete");
+            System.out.println("Validation");
         }
     }
 
@@ -168,10 +169,14 @@ public class Main extends Application{
             String ruang = add_ruang.getText();
 
             if(dosen.isEmpty() || matkul.isEmpty() || gkb.isEmpty() || waktu.isEmpty() || ruang.isEmpty()){
-                System.out.println("Inputan Tidak Boleh Ada Yang Kosong");
+                alert.setAlertType(AlertType.WARNING);
+                alert.setContentText("Inputan Tidak Boleh Ada Yang Kosong");
+                alert.show();
             }else{
                 if(intGKB()){
-                    System.out.println("Data Berhasil di tambahkan");
+                    alert.setAlertType(AlertType.INFORMATION);
+                    alert.setContentText("Data Berhasil Ditambahkan");
+                    alert.show();
                     Data.add(new Jadwal (
                         add_dosen.getText(), 
                         add_matkul.getText(),
@@ -185,7 +190,9 @@ public class Main extends Application{
                     add_waktu.clear();
                     add_ruang.clear();
                 }else{
-                    System.out.println("Alert");
+                    alert.setAlertType(AlertType.WARNING);
+                    alert.setContentText("Inputan GKB Harus Integer");
+                    alert.show();
                 }
             }
         });
@@ -202,7 +209,9 @@ public class Main extends Application{
         update_button.setBorder(b);
         update_button.setOnAction((ActionEvent e) -> {
             if(intGKB()){
-                System.out.println("Data Berhasil diubah");
+                alert.setAlertType(AlertType.INFORMATION);
+                alert.setContentText("Data Berhasil Diubah");
+                alert.show();
                 Table.getItems().remove(Table.getSelectionModel().getSelectedIndex());
                 Data.add(new Jadwal(
                     add_dosen.getText(), 
@@ -217,7 +226,9 @@ public class Main extends Application{
                 add_waktu.clear();
                 add_ruang.clear();
             }else{
-                System.out.println("Alert");
+                alert.setAlertType(AlertType.WARNING);
+                alert.setContentText("Inputan GKB Harus Integer");
+                alert.show();
             }
         });
     }
@@ -232,7 +243,9 @@ public class Main extends Application{
         delete_button.setTextFill(Color.BLACK);
         delete_button.setBorder(b);
         delete_button.setOnAction((ActionEvent e) -> {
-            System.out.println("Data Berhasil dihapus");
+            alert.setAlertType(AlertType.INFORMATION);
+            alert.setContentText("Data Berhasil Dihapus");
+            alert.show();
             Table.getItems().removeAll(Table.getSelectionModel().getSelectedItems());
         });
     }
@@ -249,7 +262,6 @@ public class Main extends Application{
         exit_button.setOnAction((ActionEvent e) -> {
             System.out.println("Keluar");
             Platform.exit();
-            System.exit(0);
         });
     }
 }
