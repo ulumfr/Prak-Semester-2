@@ -24,7 +24,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 
@@ -43,9 +43,9 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-
-    final HBox hbox = new HBox();
-    final VBox vbox = new VBox();
+    //komponen
+    private final HBox hbox = new HBox();
+    private final VBox vbox = new VBox();
 
     private final TableColumn <Jadwal, String> col_dosen = new TableColumn<>("Dosen");
     private final TableColumn <Jadwal, String> col_matkul = new TableColumn<>("Matkul");
@@ -66,8 +66,10 @@ public class Main extends Application{
 
     private final Label label = new Label("Jadwal Kuliah Kelas J");
     private final Alert alert = new Alert(AlertType.NONE);
-
+    private final Image image = new Image("D:\\Arul\\Programming\\Visual Studio Code\\Kuliah\\Tugas Kuliah S2 (Java)\\Modul 6 (JavaFX)\\Kegiatan\\images\\umm.png");
+        
     private final TableView <Jadwal> Table = new TableView<>();
+    
     private final ObservableList <Jadwal> Data = FXCollections.observableArrayList();
 
     public static void main(String[] args) {
@@ -80,9 +82,10 @@ public class Main extends Application{
         stage.setWidth(1050);
         stage.setHeight(600);
         scene.setFill(Color.DARKGRAY);
-        
+        stage.getIcons().add(image);
         label.setFont(Font.font("Arial", FontWeight.BOLD, 30));
 
+        Table.setPlaceholder(new Label("Belum Ada Isinya Bang"));
         Table.setEditable(true);
 
         kolom(); input();
@@ -146,6 +149,7 @@ public class Main extends Application{
             Integer.parseInt(add_gkb.getText());
             return true;
         }catch(NumberFormatException ex){
+            System.out.println("Salah");
             return false;
         }finally{
             System.out.println("Validation");
@@ -208,27 +212,39 @@ public class Main extends Application{
         update_button.setTextFill(Color.BLACK);
         update_button.setBorder(b);
         update_button.setOnAction((ActionEvent e) -> {
-            if(intGKB()){
-                alert.setAlertType(AlertType.INFORMATION);
-                alert.setContentText("Data Berhasil Diubah");
-                alert.show();
-                Table.getItems().remove(Table.getSelectionModel().getSelectedIndex());
-                Data.add(new Jadwal(
-                    add_dosen.getText(), 
-                    add_matkul.getText(), 
-                    add_gkb.getText(), 
-                    add_waktu.getText(), 
-                    add_ruang.getText()
-                    ));
-                add_dosen.clear();
-                add_matkul.clear();
-                add_gkb.clear();
-                add_waktu.clear();
-                add_ruang.clear();
-            }else{
+            String dosen = add_dosen.getText();
+            String matkul = add_matkul.getText();
+            String gkb = add_gkb.getText();
+            String waktu = add_waktu.getText();
+            String ruang = add_ruang.getText();
+            
+            if(dosen.isEmpty() || matkul.isEmpty() || gkb.isEmpty() || waktu.isEmpty() || ruang.isEmpty()){
                 alert.setAlertType(AlertType.WARNING);
-                alert.setContentText("Inputan GKB Harus Integer");
+                alert.setContentText("Inputan Tidak Boleh Ada Yang Kosong");
                 alert.show();
+            }else{
+                if(intGKB()){
+                    alert.setAlertType(AlertType.INFORMATION);
+                    alert.setContentText("Data Berhasil Diubah");
+                    alert.show();
+                    Table.getItems().remove(Table.getSelectionModel().getSelectedIndex());
+                    Data.add(new Jadwal(
+                        add_dosen.getText(), 
+                        add_matkul.getText(), 
+                        add_gkb.getText(), 
+                        add_waktu.getText(), 
+                        add_ruang.getText()
+                    ));
+                    add_dosen.clear();
+                    add_matkul.clear();
+                    add_gkb.clear();
+                    add_waktu.clear();
+                    add_ruang.clear();
+                }else{
+                    alert.setAlertType(AlertType.WARNING);
+                    alert.setContentText("Inputan GKB Harus Integer");
+                    alert.show();
+                }
             }
         });
     }

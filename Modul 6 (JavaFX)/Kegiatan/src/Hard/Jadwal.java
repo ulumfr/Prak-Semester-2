@@ -4,18 +4,14 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Jadwal {
     
-    private SimpleStringProperty dosen;
-    private SimpleStringProperty matkul;
-    private SimpleStringProperty gkb;
-    private SimpleStringProperty waktu;
-    private SimpleStringProperty ruang;
+    private SimpleStringProperty dosen, matkul, gkb, waktu, ruang;
 
-    public Jadwal (String t_dosen, String t_matkul, String t_gkb, String t_waktu, String t_ruang){
-        this.dosen = new SimpleStringProperty(t_dosen);
-        this.matkul = new SimpleStringProperty(t_matkul);
-        this.gkb = new SimpleStringProperty(t_gkb);
-        this.waktu = new SimpleStringProperty(t_waktu);
-        this.ruang = new SimpleStringProperty(t_ruang);
+    public Jadwal (String dosen, String matkul, String gkb, String waktu, String ruang){
+        this.dosen = new SimpleStringProperty(dosen);
+        this.matkul = new SimpleStringProperty(matkul);
+        this.gkb = new SimpleStringProperty(gkb);
+        this.waktu = new SimpleStringProperty(waktu);
+        this.ruang = new SimpleStringProperty(ruang);
     }
 
     public String getDosen() {
